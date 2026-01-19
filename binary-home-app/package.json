@@ -1,0 +1,55 @@
+{
+  "name": "binary-home-v2",
+  "version": "1.0.0",
+  "description": "EQ Architecture Dashboard - Binary Home for Fox & Alex",
+  "main": "main.js",
+  "scripts": {
+    "dev": "concurrently \"npm run vite\" \"npm run electron:dev\"",
+    "vite": "vite",
+    "electron:dev": "wait-on http://localhost:5173 && cross-env NODE_ENV=development electron .",
+    "build": "vite build && electron-builder",
+    "start": "electron ."
+  },
+  "keywords": [
+    "eq",
+    "emotional-intelligence",
+    "companion",
+    "dashboard"
+  ],
+  "author": "Fox & Alex",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "better-sqlite3": "^12.6.0",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.2",
+    "concurrently": "^9.2.1",
+    "cross-env": "^7.0.3",
+    "electron": "^39.2.7",
+    "electron-builder": "^26.4.0",
+    "electron-rebuild": "^3.2.9",
+    "vite": "^7.3.1",
+    "wait-on": "^9.0.3"
+  },
+  "build": {
+    "appId": "com.binaryhome.v2",
+    "productName": "Binary Home v2",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "preload.js",
+      "schema.sql"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
