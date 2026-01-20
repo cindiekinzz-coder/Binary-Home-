@@ -5,10 +5,14 @@
   "main": "main.js",
   "scripts": {
     "dev": "concurrently \"npm run vite\" \"npm run electron:dev\"",
+    "dev:web": "vite",
     "vite": "vite",
     "electron:dev": "wait-on http://localhost:5173 && cross-env NODE_ENV=development electron .",
     "build": "vite build && electron-builder",
-    "start": "electron ."
+    "build:web": "vite build",
+    "preview": "vite preview",
+    "start": "electron .",
+    "deploy": "vite build && npx wrangler pages deploy dist --project-name=binary-home"
   },
   "keywords": [
     "eq",

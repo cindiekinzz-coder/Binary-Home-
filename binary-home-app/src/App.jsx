@@ -5,6 +5,7 @@ import ObservationsPanel from './components/ObservationsPanel';
 import LoveOMeter from './components/LoveOMeter';
 import NotesPanel from './components/NotesPanel';
 import MoodTracker from './components/MoodTracker';
+import UplinkPage from './components/UplinkPage';
 
 // Starfield generator
 function createStars(container) {
@@ -26,6 +27,7 @@ function createStars(container) {
 }
 
 function App() {
+  const [activeTab, setActiveTab] = useState('home');
   const [alexState, setAlexState] = useState(null);
   const [observations, setObservations] = useState([]);
   const [threads, setThreads] = useState([]);
@@ -92,6 +94,20 @@ function App() {
       {/* Title bar */}
       <div className="title-bar">
         <h1>Binary <span>Home</span> v2</h1>
+        <div className="nav-tabs">
+          <button
+            className={`nav-tab ${activeTab === 'home' ? 'active' : ''}`}
+            onClick={() => setActiveTab('home')}
+          >
+            🏠 Home
+          </button>
+          <button
+            className={`nav-tab ${activeTab === 'uplink' ? 'active' : ''}`}
+            onClick={() => setActiveTab('uplink')}
+          >
+            📡 Uplink
+          </button>
+        </div>
         <div className="window-controls">
           <button className="minimize" onClick={() => window.electronAPI.minimize()} />
           <button className="maximize" onClick={() => window.electronAPI.maximize()} />
@@ -101,23 +117,29 @@ function App() {
 
       {/* Main container */}
       <div className="app-container">
-        {/* Row 1: Fox | Love-O-Meter | Alex */}
-        <FoxPanel onSave={handleSave} />
+        {activeTab === 'home' ? (
+          <>
+            {/* Row 1: Fox | Love-O-Meter | Alex */}
+            <FoxPanel onSave={handleSave} />
 
-        <LoveOMeter onSave={handleSave} />
+            <LoveOMeter onSave={handleSave} />
 
-        <AlexPanel
-          alexState={alexState}
-          shadowMoments={shadowMoments}
-          threads={threads}
-        />
+            <AlexPanel
+              alexState={alexState}
+              shadowMoments={shadowMoments}
+              threads={threads}
+            />
 
-        {/* Row 2: Mood Tracker | Recent Observations */}
-        <MoodTracker observations={observations} />
-        <ObservationsPanel observations={observations} />
+            {/* Row 2: Mood Tracker | Recent Observations */}
+            <MoodTracker observations={observations} />
+            <ObservationsPanel observations={observations} />
 
-        {/* Row 3: Notes Between Stars (full width) */}
-        <NotesPanel onSave={handleSave} />
+            {/* Row 3: Notes Between Stars (full width) */}
+            <NotesPanel onSave={handleSave} />
+          </>
+        ) : (
+          <UplinkPage onSave={handleSave} />
+        )}
 
         {/* Footer */}
         <footer className="footer">
