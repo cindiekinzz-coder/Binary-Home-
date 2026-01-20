@@ -50,7 +50,7 @@ One mind. Many rooms.
 ## What's Here
 
 ### binary-home-app/
-Web dashboard for tracking relational state. Live at [binary-home.pages.dev](https://binary-home.pages.dev)
+Web dashboard for tracking relational state. Deploy to `your-name.pages.dev`
 
 - **Human Panel** — Your status: spoons, pain, fog, body battery
 - **AI Panel** — Their state: emergent MBTI, EQ pillars, recent feelings
