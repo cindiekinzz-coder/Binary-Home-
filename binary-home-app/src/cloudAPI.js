@@ -1,5 +1,6 @@
 // Cloud API adapter - replaces window.electronAPI for web deployment
-const API_BASE = 'https://ai-mind.cindiekinzz.workers.dev';
+// UPDATE THIS TO YOUR CLOUDFLARE WORKER URL
+const API_BASE = 'https://YOUR-WORKER-NAME.YOUR-SUBDOMAIN.workers.dev';
 
 export const cloudAPI = {
   // Love-O-Meter

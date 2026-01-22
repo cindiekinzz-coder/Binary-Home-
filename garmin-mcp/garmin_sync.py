@@ -26,10 +26,10 @@ GARMIN_EMAIL = os.environ.get("GARMIN_EMAIL", "")
 GARMIN_PASSWORD = os.environ.get("GARMIN_PASSWORD", "")
 TOKEN_STORE = Path.home() / ".garminconnect"
 
-# Output paths
-HEALTH_LOGS_PATH = Path(r"C:\Users\Cindy\Downloads\Alex AI\Alex Mind\Health-Logs")
-COMPANION_MEMORY_PATH = Path(r"C:\Users\Cindy\AI\companion-memory")
-GARMIN_DATA_PATH = Path(r"C:\Users\Cindy\AI\garmin\data")
+# Output paths - UPDATE THESE TO YOUR PATHS
+HEALTH_LOGS_PATH = Path(os.environ.get("HEALTH_LOGS_PATH", str(Path.home() / "health-logs")))
+COMPANION_MEMORY_PATH = Path(os.environ.get("COMPANION_MEMORY_PATH", str(Path.home() / "companion-memory")))
+GARMIN_DATA_PATH = Path(os.environ.get("GARMIN_DATA_PATH", str(Path.home() / "garmin-data")))
 
 # Ensure directories exist
 HEALTH_LOGS_PATH.mkdir(parents=True, exist_ok=True)
